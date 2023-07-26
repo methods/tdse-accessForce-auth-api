@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify
 
 authorise = Blueprint("authorise", __name__)
 
+
 @authorise.route("/", methods=["GET"])
 def get_api_key():
     try:
