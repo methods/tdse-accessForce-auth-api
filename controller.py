@@ -18,7 +18,14 @@ def get_jwt():
     try:
         secret = "THIS_IS_A_SECRET"
         payload = request.json
+        if payload["username"] in admin_users:
+            payload["admin"] = True
+        else:
+            payload["admin"] = False
         token = jwt.encode(payload=payload, key=secret)
         return jsonify({"jwt": token}), 200
     except Exception as e:
         return jsonify({"Error": str(e)}), 500
+
+
+admin_users = ["Julio", "Pira", "Nathan"]
