@@ -1,2 +1,2 @@
-# tdse-accessForce-auth-api
-Authorisation API for Bids API project
+# tdse-accessForce-auth-stub
+Authorisation stub for Bids API project
