@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 import jwt
-import datetime
+from datetime import datetime, timedelta
 
 
 authorise = Blueprint("authorise", __name__)
@@ -23,7 +23,7 @@ def get_jwt():
             payload["admin"] = True
         else:
             payload["admin"] = False
-        payload["exp"] = datetime.datetime.utcnow() + datetime.timedelta(seconds=60)
+        payload["exp"] = datetime.utcnow() + timedelta(days=7)
         token = jwt.encode(payload=payload, key=secret)
         return jsonify({"jwt": token}), 200
     except Exception as e:
